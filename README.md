@@ -6,6 +6,9 @@ docker build -t XXXXXXXXXXXX.dkr.ecr.ap-northeast-1.amazonaws.com/mynavi-sample-
 * ローカルでDocker実行（ProfileをdevでSpringBoot実行）
 ```sh
 docker run -d -p 8080:8080 --name samplebackend --env ENV_TYPE=dev XXXXXXXXXXXX.dkr.ecr.ap-northeast-1.amazonaws.com/mynavi-sample-ecs-backend
+
+#logをjson形式にする場合
+docker run -d -p 8080:8080 --name samplebackend --env ENV_TYPE=dev,log_container XXXXXXXXXXXX.dkr.ecr.ap-northeast-1.amazonaws.com/mynavi-sample-ecs-backend
 ```
 
 * ECRプッシュ

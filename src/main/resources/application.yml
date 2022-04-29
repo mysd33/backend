@@ -1,5 +1,9 @@
+spring:
+  profiles:
+    active:
+    - dev
+    - log_default  #logging in default format
+#    - log_container  #logging in json format
 server:
   servlet:
     context-path: /backend
-#service:
-#  dns: https://sample-ecs-alb-1379155413.ap-northeast-1.elb.amazonaws.com/
