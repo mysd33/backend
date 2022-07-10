@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: ${$REPOSITORY_URI}:${IMAGE_TAG}
+        image: ${REPOSITORY_URI}:${IMAGE_TAG}
         ports:
         - containerPort: 8080
         env:
