@@ -11,6 +11,7 @@ phases:
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       - ECS_TASK_DEFINITION_ARN=Demo-ecstask-backend-app
+      - export IMAGE_TAG      
   build:
     commands:
       - echo Build started on `date`
@@ -29,6 +30,7 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name":"ecsdemo-backend-service","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - printf '{"ImageURI":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+      - envsubst < k8s/k8s-bff-deployment-template.yaml > k8s/k8s-bff-deployment.yaml
 #TODO: taskdef.json auto generate
       - aws ecs describe-task-definition --task-definition $ECS_TASK_DEFINITION_ARN --query taskDefinition | jq '.containerDefinitions[0].image="<IMAGE1_NAME>"' > taskdef.json
 artifacts:
@@ -37,6 +39,7 @@ artifacts:
     - imagedefinitions.json
     - imageDetail.json
     - taskdef.json
+    - k8s/k8s-bff-deployment.yaml
 cache:
   paths:
     - '/root/.m2/**/*'
