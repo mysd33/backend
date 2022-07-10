@@ -11,7 +11,8 @@ phases:
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       - ECS_TASK_DEFINITION_ARN=Demo-ecstask-backend-app
-      - export IMAGE_TAG      
+      - export IMAGE_TAG
+      - ls /root/.m2/  
   build:
     commands:
       - echo Build started on `date`
