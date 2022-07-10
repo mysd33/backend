@@ -39,7 +39,7 @@ artifacts:
     - imagedefinitions.json
     - imageDetail.json
     - taskdef.json
-    - k8s/k8s-bff-deployment.yaml
+    - k8s/k8s-backend-deployment-template.yaml
 cache:
   paths:
     - '/root/.m2/**/*'
