@@ -42,7 +42,7 @@ artifacts:
     #- target/mynavi-sample-aws-ecs-backend-*.jar
 #For ECS Rolling Update
     - imagedefinitions.json
-#For ECS Blue Green
+#For ECS Blue Green Deployment
     - imageDetail.json
     - taskdef.json
 #For EKS Rolling Update
